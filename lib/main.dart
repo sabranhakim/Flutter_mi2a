@@ -1,3 +1,10 @@
+import 'package:first_flutter/screen/page_column.dart';
+import 'package:first_flutter/screen/page_gambar.dart';
+import 'package:first_flutter/screen/page_list_horizontal.dart';
+import 'package:first_flutter/screen/page_row.dart';
+import 'package:first_flutter/screen/page_row_column.dart';
+import 'package:first_flutter/screen/page_satu.dart';
+import 'package:first_flutter/screen/page_url_image.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -46,12 +53,92 @@ class PageUtama extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('App MI 2A'),
-        backgroundColor: Colors.purple,
-        centerTitle: true,
+        backgroundColor: const Color.fromARGB(255, 191, 0, 255),
       ),
-      
+
       body: Center(
-        child: Text('Welcome to MI 2A Apps'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly, //horizontal
+          crossAxisAlignment: CrossAxisAlignment.center, //vertikal
+          children: [
+            Text('Welcome to MI 2A Apps'),
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageSatu()),
+                );
+              },
+              color: Colors.orange,
+              child: Text(
+                'Page1',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: MaterialButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => PageColumn()),
+                  );
+                },
+                elevation: 18.0,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                color: Colors.orange,
+                clipBehavior: Clip.antiAlias,
+                child: Text(
+                  'Page2',
+                  style: TextStyle(fontSize: 14, color: Colors.white),
+                ),
+              ),
+            ),
+
+            MaterialButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageRow()),
+                );
+              },
+              color: Colors.orange,
+              child: Text(
+                'Page3',
+                style: TextStyle(fontSize: 14, color: Colors.white),
+              ),
+            ),
+
+            MaterialButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)
+              => PageListHorizontal()
+              ));
+            },
+                color : Colors.orange,
+                child : Text ('Page4', style: TextStyle(fontSize: 14, color: Colors.white))
+            ),
+            MaterialButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)
+              => PageGambar()
+              ));
+            },
+                color : Colors.orange,
+                child : Text ('PageGambar', style: TextStyle(fontSize: 14, color: Colors.white))
+            ),
+            MaterialButton(onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)
+              => PageUrlImage()
+              ));
+            },
+                color : Colors.orange,
+                child : Text ('PageUrlImage', style: TextStyle(fontSize: 14, color: Colors.white))
+            ),
+
+          ],
+        ),
       ),
     );
   }
